@@ -1,21 +1,8 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
-import javax.swing.border.TitledBorder;
 
 public class AirControl extends JFrame{
 
@@ -105,7 +92,7 @@ public class AirControl extends JFrame{
 		txtRadius_Input.setBounds(85, 105, 47, 21);
 		getContentPane().add(txtRadius_Input);
 		
-		lblAngle_input = new JLabel("Ângulo:");
+		lblAngle_input = new JLabel("ï¿½ngulo:");
 		lblAngle_input.setBounds(160, 110, 50, 15);
 		getContentPane().add(lblAngle_input);
 		
@@ -121,7 +108,7 @@ public class AirControl extends JFrame{
 		txtVelocity_Input.setBounds(85, 145, 47, 21);
 		getContentPane().add(txtVelocity_Input);
 		
-		lblDiretion_input = new JLabel("Direção:");
+		lblDiretion_input = new JLabel("Direï¿½ï¿½o:");
 		lblDiretion_input.setBounds(155, 150, 50, 15);
 		getContentPane().add(lblDiretion_input);
 		
@@ -134,7 +121,7 @@ public class AirControl extends JFrame{
 		getContentPane().add(btnInsert);	
 		
 		//Transformation function
-		lblFunc_Trans = new JLabel("Funções de Transformação");
+		lblFunc_Trans = new JLabel("Funï¿½ï¿½es de Transformaï¿½ï¿½o");
 		lblFunc_Trans.setBounds(90,220, 147, 15);
 		getContentPane().add(lblFunc_Trans);
 		
@@ -180,7 +167,7 @@ public class AirControl extends JFrame{
 		btnechelon.setBounds(155, 270, 80, 25);
 		getContentPane().add(btnechelon);
 		
-		lblAngle_rotate = new JLabel("Ângulo:");
+		lblAngle_rotate = new JLabel("ï¿½ngulo:");
 		lblAngle_rotate.setBounds(25, 330, 40, 15);
 		getContentPane().add(lblAngle_rotate);
 		
@@ -188,7 +175,7 @@ public class AirControl extends JFrame{
 		txtAngle_rotate.setBounds(65, 325, 50, 21);
 		getContentPane().add(txtAngle_rotate);
 		
-		lblrotate_center = new JLabel("Centro Rotação");
+		lblrotate_center = new JLabel("Centro Rotaï¿½ï¿½o");
 		lblrotate_center.setBounds(150,330, 80, 15);
 		getContentPane().add(lblrotate_center);
 		
@@ -213,11 +200,11 @@ public class AirControl extends JFrame{
 		getContentPane().add(btnrotate);
 		
 		//Tracking function
-		lblTrackFunction = new JLabel("Funções de Rastreamento");
+		lblTrackFunction = new JLabel("Funï¿½ï¿½es de Rastreamento");
 		lblTrackFunction.setBounds(90, 400, 150, 25);
 		getContentPane().add(lblTrackFunction);
 		
-		lblDistance_track = new JLabel("Distância Mínima:");
+		lblDistance_track = new JLabel("Distï¿½ncia Mï¿½nima:");
 		lblDistance_track.setBounds(25, 430, 90, 25);
 		getContentPane().add(lblDistance_track);
 		
@@ -229,7 +216,7 @@ public class AirControl extends JFrame{
 		btnAirplane.setBounds(25, 460, 190, 25);
 		getContentPane().add(btnAirplane);
 		
-		lblDistanceMin_track = new JLabel("Distância Mínima:");
+		lblDistanceMin_track = new JLabel("Distï¿½ncia Mï¿½nima:");
 		lblDistanceMin_track.setBounds(250, 430, 90, 25);
 		getContentPane().add(lblDistanceMin_track);
 		
@@ -241,7 +228,7 @@ public class AirControl extends JFrame{
 		btnAirplaneNear.setBounds(260, 460, 120, 25);
 		getContentPane().add(btnAirplaneNear);
 		
-		lblTime_track = new JLabel("Tempo Mínimo:");
+		lblTime_track = new JLabel("Tempo Mï¿½nimo:");
 		lblTime_track.setBounds(435, 430, 90, 25);
 		getContentPane().add(lblTime_track);
 		
@@ -249,11 +236,11 @@ public class AirControl extends JFrame{
 		txtTime_track.setBounds(510, 430, 50, 25);
 		getContentPane().add(txtTime_track);
 		
-		btncolisionroute = new JButton("Em rota de colisão");
+		btncolisionroute = new JButton("Em rota de colisï¿½o");
 		btncolisionroute.setBounds(440, 460, 120, 25);
 		getContentPane().add(btncolisionroute);
 		
-		lblRelatory = new JLabel("Relatório");
+		lblRelatory = new JLabel("Relatï¿½rio");
 		lblRelatory.setBounds(770, 250, 60, 15);
 		getContentPane().add(lblRelatory);
 		
