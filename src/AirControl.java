@@ -212,7 +212,7 @@ public class AirControl extends JFrame{
 		btnrotate.setBounds(25, 350, 90, 25);
 		getContentPane().add(btnrotate);
 		
-		//Track function
+		//Tracking function
 		lblTrackFunction = new JLabel("Funções de Rastreamento");
 		lblTrackFunction.setBounds(90, 400, 150, 25);
 		getContentPane().add(lblTrackFunction);
