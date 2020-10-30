@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
@@ -37,7 +38,10 @@ public class AirControl extends JFrame{
 	private JLabel lblY_rotate;
 	private JLabel lblrotate_center;
 	private JLabel lblAngle_rotate;
-	private JLabel lblTracking;
+	private JLabel lblTrackFunction;
+	private JLabel lblDistance_track;
+	private JLabel lblDistanceMin_track;
+	private JLabel lblTime_track;
 	private JTextField txtX_Input;
 	private JTextField txtY_Input;
 	private JTextField txtRadius_Input;
@@ -51,11 +55,18 @@ public class AirControl extends JFrame{
 	private JTextField txtX_rotate;
 	private JTextField txtY_rotate;
 	private JTextField txtAngle_rotate;
+	private JTextField txtDistance_track;
+	private JTextField txtDistanceMin_track;
+	private JTextField txtTime_track;
+	private JTextArea  txtArelatory;
 	private JButton btnInsert;
 	private JButton btnTransfer;
 	private JButton btnechelon;
 	private JButton btnrotate;
-	private JPanel pnlInput_data;
+	private JButton btnAirplane;
+	private JButton btnAirplaneNear;
+	private JButton btncolisionroute;
+//	private JPanel pnlInput_data;
 	
 	public AirControl () {
 		
@@ -122,7 +133,7 @@ public class AirControl extends JFrame{
 		btnInsert.setBounds(105, 175, 75, 25);
 		getContentPane().add(btnInsert);	
 		
-		//Function transformation
+		//Transformation function
 		lblFunc_Trans = new JLabel("Funções de Transformação");
 		lblFunc_Trans.setBounds(90,220, 147, 15);
 		getContentPane().add(lblFunc_Trans);
@@ -168,6 +179,86 @@ public class AirControl extends JFrame{
 		btnechelon = new JButton("Escalonar");
 		btnechelon.setBounds(155, 270, 80, 25);
 		getContentPane().add(btnechelon);
-
+		
+		lblAngle_rotate = new JLabel("Ângulo:");
+		lblAngle_rotate.setBounds(25, 330, 40, 15);
+		getContentPane().add(lblAngle_rotate);
+		
+		txtAngle_rotate = new JTextField();
+		txtAngle_rotate.setBounds(65, 325, 50, 21);
+		getContentPane().add(txtAngle_rotate);
+		
+		lblrotate_center = new JLabel("Centro Rotação");
+		lblrotate_center.setBounds(150,330, 80, 15);
+		getContentPane().add(lblrotate_center);
+		
+		lblX_rotate = new JLabel("X:");
+		lblX_rotate.setBounds(140, 355, 27, 15);
+		getContentPane().add(lblX_rotate);
+		
+		txtX_rotate = new JTextField();
+		txtX_rotate.setBounds(151, 350, 35, 21);
+		getContentPane().add(txtX_rotate);
+		
+		lblY_rotate = new JLabel("Y:");
+		lblY_rotate.setBounds(195,355, 27, 15);
+		getContentPane().add(lblY_rotate);
+		
+		txtY_rotate = new JTextField();
+		txtY_rotate.setBounds(206,350, 35, 21);
+		getContentPane().add(txtY_rotate);
+		
+		btnrotate = new JButton("Rotacionar");
+		btnrotate.setBounds(25, 350, 90, 25);
+		getContentPane().add(btnrotate);
+		
+		//Track function
+		lblTrackFunction = new JLabel("Funções de Rastreamento");
+		lblTrackFunction.setBounds(90, 400, 150, 25);
+		getContentPane().add(lblTrackFunction);
+		
+		lblDistance_track = new JLabel("Distância Mínima:");
+		lblDistance_track.setBounds(25, 430, 90, 25);
+		getContentPane().add(lblDistance_track);
+		
+		txtDistance_track = new JTextField();
+		txtDistance_track.setBounds(110, 430, 100, 25);
+		getContentPane().add(txtDistance_track);
+		
+		btnAirplane = new JButton("Avioes proximo ao aeroporto");
+		btnAirplane.setBounds(25, 460, 190, 25);
+		getContentPane().add(btnAirplane);
+		
+		lblDistanceMin_track = new JLabel("Distância Mínima:");
+		lblDistanceMin_track.setBounds(250, 430, 90, 25);
+		getContentPane().add(lblDistanceMin_track);
+		
+		txtDistanceMin_track = new JTextField();
+		txtDistanceMin_track.setBounds(335, 430, 50, 25);
+		getContentPane().add(txtDistanceMin_track);
+		
+		btnAirplaneNear = new JButton("Avioes proximo");
+		btnAirplaneNear.setBounds(260, 460, 120, 25);
+		getContentPane().add(btnAirplaneNear);
+		
+		lblTime_track = new JLabel("Tempo Mínimo:");
+		lblTime_track.setBounds(435, 430, 90, 25);
+		getContentPane().add(lblTime_track);
+		
+		txtTime_track = new JTextField();
+		txtTime_track.setBounds(510, 430, 50, 25);
+		getContentPane().add(txtTime_track);
+		
+		btncolisionroute = new JButton("Em rota de colisão");
+		btncolisionroute.setBounds(440, 460, 120, 25);
+		getContentPane().add(btncolisionroute);
+		
+		lblRelatory = new JLabel("Relatório");
+		lblRelatory.setBounds(770, 250, 60, 15);
+		getContentPane().add(lblRelatory);
+		
+		txtArelatory = new JTextArea();
+		txtArelatory.setBounds(650, 270, 300, 220);
+		getContentPane().add(txtArelatory);
 	}
 }
