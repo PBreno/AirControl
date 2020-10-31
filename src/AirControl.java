@@ -1,8 +1,17 @@
+import java.awt.Color;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import org.eclipse.swt.graphics.Image;
 
 public class AirControl extends JFrame{
 
@@ -53,21 +62,33 @@ public class AirControl extends JFrame{
 	private JButton btnAirplane;
 	private JButton btnAirplaneNear;
 	private JButton btncolisionroute;
-//	private JPanel pnlInput_data;
+	private JPanel pnlInput_data;
+	private JPanel pnlTranslate;
+	private JPanel pnlEchelon;
+	private JPanel pnlrotate;
+	private JPanel pnltrackAriplane;
+	private JPanel pnltrackDistance;
+	private JPanel pnltrackTIme;
+	private JPanel pnlRelatory;
+	private String imagem = "Test1.jpg" ;
+	private JLabel image;
 	
-	public AirControl () {
+	
+	public AirControl ()  {
 		
 		setTitle("Air Control");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setLayout(null);
 		setLocationRelativeTo(null);
 		setSize(1050, 650);
-		
+		setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage(imagem));
+		image.setIcon(new ImageIcon(getClass().getResource("test.jpg")));
+		getContentPane().add(image);
 		//Data input 
 		lblInput_data = new JLabel("Entrada de dados");
 		lblInput_data.setBounds(100, 40, 147, 15);
 		getContentPane().add(lblInput_data);
-		
+
 		lblX_input = new JLabel("X:");
 		lblX_input.setBounds(75, 75, 27, 15);
 		getContentPane().add(lblX_input);
@@ -92,7 +113,7 @@ public class AirControl extends JFrame{
 		txtRadius_Input.setBounds(85, 105, 47, 21);
 		getContentPane().add(txtRadius_Input);
 		
-		lblAngle_input = new JLabel("ï¿½ngulo:");
+		lblAngle_input = new JLabel("Ângulo:");
 		lblAngle_input.setBounds(160, 110, 50, 15);
 		getContentPane().add(lblAngle_input);
 		
@@ -108,7 +129,7 @@ public class AirControl extends JFrame{
 		txtVelocity_Input.setBounds(85, 145, 47, 21);
 		getContentPane().add(txtVelocity_Input);
 		
-		lblDiretion_input = new JLabel("Direï¿½ï¿½o:");
+		lblDiretion_input = new JLabel("Direção:");
 		lblDiretion_input.setBounds(155, 150, 50, 15);
 		getContentPane().add(lblDiretion_input);
 		
@@ -120,8 +141,15 @@ public class AirControl extends JFrame{
 		btnInsert.setBounds(105, 175, 75, 25);
 		getContentPane().add(btnInsert);	
 		
-		//Transformation function
-		lblFunc_Trans = new JLabel("Funï¿½ï¿½es de Transformaï¿½ï¿½o");
+		pnlInput_data = new JPanel();
+		pnlInput_data.setBorder(BorderFactory.createLineBorder(Color.black));
+		pnlInput_data.setBounds(20, 55, 250, 150);
+		pnlInput_data.setBackground(Color.white);
+		
+		getContentPane().add(pnlInput_data);
+		
+//		//Transformation function
+		lblFunc_Trans = new JLabel("Funções de Transformação");
 		lblFunc_Trans.setBounds(90,220, 147, 15);
 		getContentPane().add(lblFunc_Trans);
 		
@@ -146,28 +174,40 @@ public class AirControl extends JFrame{
 		btnTransfer.setBounds(40, 270, 85, 25);
 		getContentPane().add(btnTransfer);
 		
+		pnlTranslate = new JPanel();
+		pnlTranslate.setBorder(BorderFactory.createLineBorder(Color.black));
+		pnlTranslate.setBounds(20, 235, 110, 70);
+		pnlTranslate.setBackground(Color.white);
+		getContentPane().add(pnlTranslate);
+		
 		//Echelon 
 		lblX_echelon = new JLabel("X:");
-		lblX_echelon.setBounds(140, 250, 27, 15);
+		lblX_echelon.setBounds(150, 250, 27, 15);
 		getContentPane().add(lblX_echelon);
 		
 		txtX_Echelon = new JTextField();
-		txtX_Echelon.setBounds(151, 245, 35, 21);
+		txtX_Echelon.setBounds(161, 245, 35, 21);
 		getContentPane().add(txtX_Echelon);
 		
 		lblY_echelon = new JLabel("Y:");
-		lblY_echelon.setBounds(195,250, 27, 15);
+		lblY_echelon.setBounds(205,250, 27, 15);
 		getContentPane().add(lblY_echelon);
 		
 		txtY_Echelon = new JTextField();
-		txtY_Echelon.setBounds(206,245, 35, 21);
+		txtY_Echelon.setBounds(216,245, 35, 21);
 		getContentPane().add(txtY_Echelon);
 		
 		btnechelon = new JButton("Escalonar");
-		btnechelon.setBounds(155, 270, 80, 25);
+		btnechelon.setBounds(165, 270, 80, 25);
 		getContentPane().add(btnechelon);
 		
-		lblAngle_rotate = new JLabel("ï¿½ngulo:");
+		pnlEchelon = new JPanel();
+		pnlEchelon.setBorder(BorderFactory.createLineBorder(Color.black));
+		pnlEchelon.setBounds(140, 235, 130, 70);
+		pnlEchelon.setBackground(Color.white);
+		getContentPane().add(pnlEchelon);
+		
+		lblAngle_rotate = new JLabel("Ângulo:");
 		lblAngle_rotate.setBounds(25, 330, 40, 15);
 		getContentPane().add(lblAngle_rotate);
 		
@@ -175,7 +215,7 @@ public class AirControl extends JFrame{
 		txtAngle_rotate.setBounds(65, 325, 50, 21);
 		getContentPane().add(txtAngle_rotate);
 		
-		lblrotate_center = new JLabel("Centro Rotaï¿½ï¿½o");
+		lblrotate_center = new JLabel("Centro Rotação");
 		lblrotate_center.setBounds(150,330, 80, 15);
 		getContentPane().add(lblrotate_center);
 		
@@ -199,53 +239,84 @@ public class AirControl extends JFrame{
 		btnrotate.setBounds(25, 350, 90, 25);
 		getContentPane().add(btnrotate);
 		
+		pnlrotate = new JPanel();
+		pnlrotate.setBorder(BorderFactory.createLineBorder(Color.black));
+		pnlrotate.setBounds(20, 315,250,70);
+		pnlrotate.setBackground(Color.white);
+		getContentPane().add(pnlrotate);
+		
 		//Tracking function
-		lblTrackFunction = new JLabel("Funï¿½ï¿½es de Rastreamento");
+		lblTrackFunction = new JLabel("Funções de Rastreamento");
 		lblTrackFunction.setBounds(90, 400, 150, 25);
 		getContentPane().add(lblTrackFunction);
 		
-		lblDistance_track = new JLabel("Distï¿½ncia Mï¿½nima:");
-		lblDistance_track.setBounds(25, 430, 90, 25);
+		lblDistance_track = new JLabel("Distância Mínima:");
+		lblDistance_track.setBounds(35, 430, 90, 25);
 		getContentPane().add(lblDistance_track);
 		
 		txtDistance_track = new JTextField();
-		txtDistance_track.setBounds(110, 430, 100, 25);
+		txtDistance_track.setBounds(120, 430, 100, 25);
 		getContentPane().add(txtDistance_track);
 		
-		btnAirplane = new JButton("Avioes proximo ao aeroporto");
-		btnAirplane.setBounds(25, 460, 190, 25);
+		btnAirplane = new JButton("Aviões próximo ao aeroporto");
+		btnAirplane.setBounds(35, 460, 190, 25);
 		getContentPane().add(btnAirplane);
 		
-		lblDistanceMin_track = new JLabel("Distï¿½ncia Mï¿½nima:");
-		lblDistanceMin_track.setBounds(250, 430, 90, 25);
+		pnltrackAriplane = new JPanel();
+		pnltrackAriplane.setBorder(BorderFactory.createLineBorder(Color.black));
+		pnltrackAriplane.setBounds(20, 420, 250, 75);
+		pnltrackAriplane.setBackground(Color.white);
+		getContentPane().add(pnltrackAriplane);
+		
+		lblDistanceMin_track = new JLabel("Distância Mínima:");
+		lblDistanceMin_track.setBounds(295, 430, 90, 25);
 		getContentPane().add(lblDistanceMin_track);
 		
 		txtDistanceMin_track = new JTextField();
-		txtDistanceMin_track.setBounds(335, 430, 50, 25);
+		txtDistanceMin_track.setBounds(380, 430, 50, 25);
 		getContentPane().add(txtDistanceMin_track);
 		
-		btnAirplaneNear = new JButton("Avioes proximo");
-		btnAirplaneNear.setBounds(260, 460, 120, 25);
+		btnAirplaneNear = new JButton("Aviões proximo");
+		btnAirplaneNear.setBounds(305, 460, 120, 25);
 		getContentPane().add(btnAirplaneNear);
 		
-		lblTime_track = new JLabel("Tempo Mï¿½nimo:");
-		lblTime_track.setBounds(435, 430, 90, 25);
+		pnltrackDistance = new JPanel();
+		pnltrackDistance.setBorder(BorderFactory.createLineBorder(Color.black));
+		pnltrackDistance.setBounds(285,420, 160, 75);
+		pnltrackDistance.setBackground(Color.white);
+		getContentPane().add(pnltrackDistance);
+		
+		lblTime_track = new JLabel("Tempo Mínimo:");
+		lblTime_track.setBounds(465, 430, 90, 25);
 		getContentPane().add(lblTime_track);
 		
 		txtTime_track = new JTextField();
-		txtTime_track.setBounds(510, 430, 50, 25);
+		txtTime_track.setBounds(540, 430, 50, 25);
 		getContentPane().add(txtTime_track);
 		
-		btncolisionroute = new JButton("Em rota de colisï¿½o");
-		btncolisionroute.setBounds(440, 460, 120, 25);
+		btncolisionroute = new JButton("Em rota de colisões");
+		btncolisionroute.setBounds(465, 460, 125, 25);
 		getContentPane().add(btncolisionroute);
 		
-		lblRelatory = new JLabel("Relatï¿½rio");
+		pnltrackTIme = new JPanel();
+		pnltrackTIme.setBorder(BorderFactory.createLineBorder(Color.black));
+		pnltrackTIme.setBounds(455, 420, 160, 75);
+		pnltrackTIme.setBackground(Color.white);
+		getContentPane().add(pnltrackTIme);
+		
+		lblRelatory = new JLabel("Relatório");
 		lblRelatory.setBounds(770, 250, 60, 15);
 		getContentPane().add(lblRelatory);
 		
 		txtArelatory = new JTextArea();
 		txtArelatory.setBounds(650, 270, 300, 220);
 		getContentPane().add(txtArelatory);
+		
+		pnlRelatory = new JPanel();
+		pnlRelatory.setBorder(BorderFactory.createLineBorder(Color.black));
+		pnlRelatory.setBounds(640, 265, 325, 230);
+		pnlRelatory.setBackground(Color.white);
+		getContentPane().add(pnlRelatory);
+		
 	}
 }
