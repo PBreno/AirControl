@@ -1,15 +1,26 @@
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 
 import org.eclipse.swt.graphics.Image;
 
@@ -72,7 +83,14 @@ public class AirControl extends JFrame{
 	private JPanel pnlRelatory;
 	private String imagem = "Test1.jpg" ;
 	private JLabel image;
-	
+	private JTable tbdatagrid;
+	private String [][] data = {{"Ana Monteiro", "48 9923-7898", "ana.monteiro@gmail.com", "r"," r"," r"}};
+	private ArrayList<String> columnName;
+	private String [] Column={" ", "ID", "X","Y","R","A","V","D"};;
+	private DefaultTableModel Model;
+	private JPanel pnlbackground;
+	private JScrollPane slprool;
+	private Boolean flag = false;
 	
 	public AirControl ()  {
 		
@@ -82,8 +100,7 @@ public class AirControl extends JFrame{
 		setLocationRelativeTo(null);
 		setSize(1050, 650);
 		setIconImage(java.awt.Toolkit.getDefaultToolkit().getImage(imagem));
-		image.setIcon(new ImageIcon(getClass().getResource("test.jpg")));
-		getContentPane().add(image);
+		
 		//Data input 
 		lblInput_data = new JLabel("Entrada de dados");
 		lblInput_data.setBounds(100, 40, 147, 15);
@@ -137,7 +154,27 @@ public class AirControl extends JFrame{
 		txtDiretion_Input.setBounds(196, 145, 47, 21);
 		getContentPane().add(txtDiretion_Input);
 		
-		btnInsert = new JButton("Inserir");
+
+		btnInsert = new JButton(new AbstractAction("Inserir") {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if(txtX_Input.getText().isEmpty() && 
+						txtY_Input.getText().isEmpty() &&
+							txtRadius_Input.getText().isEmpty() &&
+								txtAngle_Input.getText().isEmpty()) {
+					JOptionPane.showMessageDialog(null, "Preencha os campos de entrada!");
+				}
+				if (!txtX_Input.getText().isEmpty() || !txtY_Input.getText().isEmpty()) {
+//						 if(!txtRadius_Input.getText().isEmpty() || !txtAngle_Input.getText().isEmpty())
+//							 JOptionPane.showMessageDialog(null, "Preencha os campos lineares ou angulares!");
+					txtRadius_Input.setEnabled(false);
+					
+				}
+				
+			}
+		});
 		btnInsert.setBounds(105, 175, 75, 25);
 		getContentPane().add(btnInsert);	
 		
@@ -170,7 +207,34 @@ public class AirControl extends JFrame{
 		txtY_transfer.setBounds(90,245, 35, 21);
 		getContentPane().add(txtY_transfer);
 		
-		btnTransfer = new JButton("Transladar");
+		btnTransfer = new JButton( new AbstractAction("Transladar") {
+			
+			float Ax;
+			float Ay;
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				if(txtX_transfer.getText().isEmpty() && txtY_transfer.getText().isEmpty())
+					JOptionPane.showMessageDialog(null, "Preencher  rtr os campos completos");
+									
+				else if (!txtX_transfer.getText().isEmpty() && txtY_transfer.getText().isEmpty() ||
+							txtX_transfer.getText().isEmpty() && !txtY_transfer.getText().isEmpty())
+					JOptionPane.showMessageDialog(null, "Preencher os campos completos");
+				
+				else {
+					
+					if ( txtX_transfer.getText().matches("[0-9]*") && txtY_transfer.getText().matches("[0-9]*") ) {
+					
+						Ax = Float.parseFloat(txtX_Input.getText()) + Float.parseFloat(txtX_transfer.getText());
+						Ay = Float.parseFloat(txtY_Input.getText()) + Float.parseFloat(txtY_transfer.getText());
+						JOptionPane.showMessageDialog(null, " Ax - " + Ax + " Ay - " + Ay);	
+					}
+					
+				}
+			}
+		});
 		btnTransfer.setBounds(40, 270, 85, 25);
 		getContentPane().add(btnTransfer);
 		
@@ -317,6 +381,52 @@ public class AirControl extends JFrame{
 		pnlRelatory.setBounds(640, 265, 325, 230);
 		pnlRelatory.setBackground(Color.white);
 		getContentPane().add(pnlRelatory);
+//		
+//		columnName = new ArrayList<String>();
+//		columnName.add(" ");
+//		columnName.add("ID");
+//		columnName.add("X");
+//		columnName.add("Y");
+//		columnName.add("R");
+//		columnName.add("A");
+//		columnName.add("V");
+//		columnName.add("D");
+		
+//		data = new String[1][8];
+//		Model = new DefaultTableModel();
+//		tbdatagrid = new JTable(Model);
+//		tbdatagrid.setPreferredSize(new Dimension(640, 225));
+//		tbdatagrid.setVisible(true);
+//		tbdatagrid.setBounds(650, 50, 300, 210);
+//		
+//		pnlbackground = new JPanel();
+//		pnlbackground.setLayout(new GridLayout(1,1));
+//		tbdatagrid = new JTable(data, Column);
+//		slprool = new JScrollPane(tbdatagrid);
+//		getContentPane().add(slprool);
+//		getContentPane().add(pnlbackground);
+		
+//		columnName = new ArrayList<String>();
+//		Model.addColumn("");
+//		Model.addColumn("ID");
+//		Model.addColumn("X");
+//		Model.addColumn("Y");
+//		Model.addColumn("R");
+//		Model.addColumn("A");
+//		Model.addColumn("V");
+//		Model.addColumn("D");
+//		
+//		for (int i = 0; i< 8;i++) {
+//			TableColumn tbcolumn = tbdatagrid.getColumnModel().getColumn(i);
+//		}
+//		 Model.addRow(new Object[0]);
+		
+		
 		
 	}
+	
+//	public void selectedField (Boolean flag) {
+//	
+//		if (txt
+//	}
 }
